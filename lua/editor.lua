@@ -5,10 +5,10 @@ local g = vim.g
 
 local function set_globals()
   g.mapleader = " "
-  g.python3_host_prog = vim.loop.os_homedir() ..
-                          "/.virtualenvs/neovim/bin/python"
-  g.python_host_prog = vim.loop.os_homedir() ..
-                         "/virtualenvs/neovim.old/bin/python"
+  -- g.python3_host_prog = vim.loop.os_homedir() ..
+  --                         "/.virtualenvs/neovim/bin/python"
+  -- g.python_host_prog = vim.loop.os_homedir() ..
+  --                        "/virtualenvs/neovim.old/bin/python"
 end
 
 local function set_mappings()
@@ -16,7 +16,7 @@ local function set_mappings()
   local mappings = {
     {"n", "<leader>,", "<Cmd>nohl<CR>", opts},
     {"n", "<leader>ls", "'0<CR>", opts},
-    {"n", "<Leader>n", ":set relativenumber!<CR>", opts},
+    {"n", "<leader>n", ":set relativenumber!<CR>", opts},
     -- buffer and aplist navigation
     {"n", "<leader>h", "<C-w>h<CR>", opts},
     {"n", "<leader>j", "<C-w>j<CR>", opts},

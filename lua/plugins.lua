@@ -26,13 +26,13 @@ local startup = function(use)
 
   -- visual
   -- use({ "folke/tokyonight.nvim" })
-  -- use({ "kyazdani42/nvim-web-devicons" })
-  -- use({
-  --   "mhinz/vim-startify",
-  --   config = function()
-  --     vim.g.startify_bookmarks = { "~/.config/nvim/lua" }
-  --   end,
-  -- })
+  use({ "kyazdani42/nvim-web-devicons" })
+  use({
+    "mhinz/vim-startify",
+    config = function()
+      vim.g.startify_bookmarks = { "~/.config/nvim/lua" }
+    end,
+  })
 
   -- git
   use({
