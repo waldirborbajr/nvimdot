@@ -94,6 +94,12 @@ local startup = function(use)
       require("config.telescope")
     end,
   }
+  use {
+    "gelguy/wilder.nvim",
+    config = function()
+      require("config.wilder")
+    end,
+  }
 
   -- lsp
   use {
