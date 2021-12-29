@@ -1,23 +1,30 @@
-require("lualine").setup {
+require'lualine'.setup {
   options = {
-    section_separators = {"", ""},
-    component_separators = {"", ""},
-    theme = "material-nvim",
+    icons_enabled = true,
+    theme = 'auto',
+    component_separators = { left = ' ', right = ' '},
+    section_separators = { left = ' ', right = ' '},
+    disabled_filetypes = {},
+    always_divide_middle = true,
   },
   sections = {
-    lualine_a = {"mode"},
-    lualine_b = {"branch", "diff"},
+    lualine_a = {'mode'},
+    lualine_b = {
+      'branch',
+      { 'diff', symbols = {added = ' ', modified = ' ', removed = ' '} },
+    },
     lualine_c = {
       function()
         return "%f"
       end,
+      'filesize',
     },
-    lualine_x = {"encoding", "fileformat", "filetype"},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {
       function()
         return "%p%%"
       end,
     },
-    lualine_z = {"location"},
+    lualine_z = {'location'}
   },
 }

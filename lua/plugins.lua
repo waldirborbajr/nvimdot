@@ -14,6 +14,7 @@ vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile ]])
 
 -- load plugins
 local startup = function(use)
+  -- Packer can manage itself
   use {"wbthomason/packer.nvim"}
 
   -- colorscheme
@@ -116,6 +117,8 @@ local startup = function(use)
       require("config.lsp")
     end,
   }
+
+  -- Completion
   use {
     "hrsh7th/nvim-cmp",
     requires = {

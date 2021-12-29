@@ -1,7 +1,6 @@
 require"nvim-treesitter.configs".setup(
   {
     ensure_installed = {
-      "css",
       "dockerfile",
       "elm",
       "fish",
@@ -9,6 +8,7 @@ require"nvim-treesitter.configs".setup(
       "gomod",
       "html",
       "javascript",
+      "css",
       "json",
       "lua",
       "python",
@@ -21,7 +21,6 @@ require"nvim-treesitter.configs".setup(
       "typescript",
       "yaml",
     },
-    highlight = {enable = true, disable = {}},
     incremental_selection = {
       enable = true,
       keymaps = {
@@ -31,6 +30,7 @@ require"nvim-treesitter.configs".setup(
         node_decremental = "-",
       },
     },
+    highlight = {enable = true, disable = {}},
     indent = {enable = true},
   }
 )
