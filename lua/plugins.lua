@@ -17,26 +17,38 @@ local startup = function(use)
   -- Packer can manage itself
   use {"wbthomason/packer.nvim"}
 
-  -- colorscheme
-  -- use {
-  --   "marko-cerovac/material.nvim",
-  --   config = function()
-  --     require("config.material")
-  --   end,
-  -- }
+  -- Startup
+  use {
+      'goolord/alpha-nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+      config = function ()
+          require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+      end
+  }
 
   -- Colorscheme / Themes
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 
   -- visual
-  -- use({ "folke/tokyonight.nvim" })
-  use({ "kyazdani42/nvim-web-devicons" })
-  use({
-    "mhinz/vim-startify",
+  -- use({ "kyazdani42/nvim-web-devicons" })
+  -- use({
+  --   "mhinz/vim-startify",
+  --   config = function()
+  --     vim.g.startify_bookmarks = { "~/.config/nvim/lua" }
+  --   end,
+  -- })
+
+  -- Developments
+  use 'jiangmiao/auto-pairs'
+
+  use {
+    "akinsho/toggleterm.nvim",
     config = function()
-      vim.g.startify_bookmarks = { "~/.config/nvim/lua" }
-    end,
-  })
+      require("toggleterm").setup{
+        direction = 'float',
+      }
+    end
+  }
 
   -- git
   use({

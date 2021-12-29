@@ -1,6 +1,7 @@
 -- modules
-require("plugins")
 require("editor")
+require('mappings')
+require("plugins")
 
 -- helpers
 PrettyPrint = function(tbl)
