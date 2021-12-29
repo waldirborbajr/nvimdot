@@ -1,6 +1,6 @@
 -- modules
 require("editor")
-require('mappings')
+require("mappings")
 require("plugins")
 
 -- helpers
