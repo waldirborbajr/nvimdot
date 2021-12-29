@@ -128,8 +128,8 @@ local function set_options()
         autocmd BufRead COMMIT_EDITMSG setlocal spell spelllang=en_ca
     augroup END
     ]]
-  )
 
+  )
   -- TODO is there a Lua API for those?
   vim.cmd(
     [[
@@ -145,6 +145,9 @@ local function set_options()
     cnoreabbrev Wqa wqa
     ]]
   )
+
+  vim.o.background = "dark" -- or "light" for light mode
+  vim.cmd([[colorscheme gruvbox]])
 end
 
 set_globals()

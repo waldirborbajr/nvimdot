@@ -18,12 +18,15 @@ local startup = function(use)
   use {"wbthomason/packer.nvim"}
 
   -- colorscheme
-  use {
-    "marko-cerovac/material.nvim",
-    config = function()
-      require("config.material")
-    end,
-  }
+  -- use {
+  --   "marko-cerovac/material.nvim",
+  --   config = function()
+  --     require("config.material")
+  --   end,
+  -- }
+
+  -- Colorscheme / Themes
+  use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
 
   -- visual
   -- use({ "folke/tokyonight.nvim" })
@@ -71,7 +74,7 @@ local startup = function(use)
     "rlch/github-notifications.nvim",
     config = function()
       require("github-notifications").setup({
-        username = "ellisonleao",
+        username = "waldirborbajr",
         mappings = {
           mark_read = "<Tab>",
           open_in_browser = "<CR>",
@@ -102,6 +105,14 @@ local startup = function(use)
     end,
   }
 
+  -- Colorize
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function ()
+      require'colorizer'.setup()
+    end
+  }
+
   -- lsp
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -129,6 +140,8 @@ local startup = function(use)
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-path",
+      "hrsh7th/cmp-vsnip",
+      "saadparwaiz1/cmp_luasnip",
       "quangnguyen30192/cmp-nvim-tags",
       "ray-x/cmp-treesitter",
       "lukas-reineke/cmp-rg",
@@ -182,13 +195,22 @@ local startup = function(use)
     end,
   }
 
+  -- Buffer
+  use {
+    'akinsho/bufferline.nvim',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function ()
+      require("bufferline").setup{}
+    end
+  }
+
   -- file tree
   use {
-    "kyazdani42/nvim-tree.lua",
-    requires = {"kyazdani42/nvim-web-devicons"},
-    config = function()
-      require("config.tree")
-    end,
+      'kyazdani42/nvim-tree.lua',
+      requires = {
+        'kyazdani42/nvim-web-devicons', -- optional, for file icon
+      },
+      config = function() require'nvim-tree'.setup {} end
   }
 
   -- status & tab lines
