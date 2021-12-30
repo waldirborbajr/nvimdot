@@ -90,6 +90,14 @@ local startup = function(use)
     },
   })
 
+  -- Notify
+  use {
+    'rcarriga/nvim-notify',
+    config = function ()
+      require('config.notify')
+    end
+  }
+
   -- GOLang
   use({ "fatih/vim-go", run = ":GoUpdateBinaries", ft = { "go" } })
 
