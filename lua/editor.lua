@@ -23,6 +23,7 @@ local function set_options()
     splitright = true,
     tabstop = 2,
     softtabstop = 2,
+    encoding = "UTF-8",
     shiftwidth = 2,
     expandtab = true,
     termguicolors = true,

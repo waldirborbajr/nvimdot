@@ -20,7 +20,7 @@ local startup = function(use)
   -- Startup
   use {
       'goolord/alpha-nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' },
+      -- requires = { 'kyazdani42/nvim-web-devicons' },
       config = function ()
           require'alpha'.setup(require'alpha.themes.dashboard'.opts)
       end
@@ -28,15 +28,6 @@ local startup = function(use)
 
   -- Colorscheme / Themes
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-
-  -- visual
-  -- use({ "kyazdani42/nvim-web-devicons" })
-  -- use({
-  --   "mhinz/vim-startify",
-  --   config = function()
-  --     vim.g.startify_bookmarks = { "~/.config/nvim/lua" }
-  --   end,
-  -- })
 
   -- Developments
   use 'jiangmiao/auto-pairs'
@@ -112,6 +103,7 @@ local startup = function(use)
   }
   use {
     "gelguy/wilder.nvim",
+    run = ":UpdateRemotePlugins",
     config = function()
       require("config.wilder")
     end,
