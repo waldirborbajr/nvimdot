@@ -40,14 +40,6 @@ local startup = function(use)
     end
   }
 
-  -- git
-  -- use({
-  --   "TimUntersberger/neogit",
-  --   requires = "nvim-lua/plenary.nvim",
-  --   config = function()
-  --     require("neogit").setup({})
-  --   end,
-  -- })
   use({
     "tpope/vim-fugitive",
     requires = { "tpope/vim-rhubarb" },
@@ -74,30 +66,6 @@ local startup = function(use)
     end
   }
 
-  -- use({
-  --   "lewis6991/gitsigns.nvim",
-  --   config = function()
-  --     require("gitsigns").setup({ numhl = true })
-  --   end,
-  -- })
-
-  -- use({
-  --   "rlch/github-notifications.nvim",
-  --   config = function()
-  --     require("github-notifications").setup({
-  --       username = "waldirborbajr",
-  --       mappings = {
-  --         mark_read = "<Tab>",
-  --         open_in_browser = "<CR>",
-  --       },
-  --     })
-  --   end,
-  --   requires = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim",
-  --   },
-  -- })
-
   -- Notify
   use {
     'rcarriga/nvim-notify',
@@ -116,11 +84,6 @@ local startup = function(use)
       'kyazdani42/nvim-web-devicons'
     }
   }
-
-  -- use {
-  --   'nvim-telescope/telescope.nvim',
-  --   requires = { {'nvim-lua/plenary.nvim'} }
-  -- }
 
   -- Colorize
   use {
@@ -266,14 +229,11 @@ local startup = function(use)
     end,
   }
 
-  -- general tools
-  -- use {"tpope/vim-abolish"}
-  -- use {"vim-scripts/greplace.vim", cmd = "Gsearch"}
-  
   -- Packer Sync
   if packer_bootstrap then
     require('packer').sync()
   end
+
 end
 
 return require("packer").startup(startup)
