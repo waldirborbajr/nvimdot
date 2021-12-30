@@ -19,11 +19,10 @@ local startup = function(use)
 
   -- Startup
   use {
-      'goolord/alpha-nvim',
-      -- requires = { 'kyazdani42/nvim-web-devicons' },
-      config = function ()
-          require'alpha'.setup(require'alpha.themes.dashboard'.opts)
-      end
+    'goolord/alpha-nvim',
+    config = function ()
+        require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+    end
   }
 
   -- Colorscheme / Themes
@@ -42,13 +41,13 @@ local startup = function(use)
   }
 
   -- git
-  use({
-    "TimUntersberger/neogit",
-    requires = "nvim-lua/plenary.nvim",
-    config = function()
-      require("neogit").setup({})
-    end,
-  })
+  -- use({
+  --   "TimUntersberger/neogit",
+  --   requires = "nvim-lua/plenary.nvim",
+  --   config = function()
+  --     require("neogit").setup({})
+  --   end,
+  -- })
   use({
     "tpope/vim-fugitive",
     requires = { "tpope/vim-rhubarb" },
@@ -65,30 +64,39 @@ local startup = function(use)
       end
     end,
   })
-
-  use({
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup({ numhl = true })
-    end,
-  })
-
-  use({
-    "rlch/github-notifications.nvim",
-    config = function()
-      require("github-notifications").setup({
-        username = "waldirborbajr",
-        mappings = {
-          mark_read = "<Tab>",
-          open_in_browser = "<CR>",
-        },
-      })
-    end,
+  use {
+    'lewis6991/gitsigns.nvim',
     requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
+      'nvim-lua/plenary.nvim'
     },
-  })
+    config = function()
+      require("config.gitsigns")
+    end
+  }
+
+  -- use({
+  --   "lewis6991/gitsigns.nvim",
+  --   config = function()
+  --     require("gitsigns").setup({ numhl = true })
+  --   end,
+  -- })
+
+  -- use({
+  --   "rlch/github-notifications.nvim",
+  --   config = function()
+  --     require("github-notifications").setup({
+  --       username = "waldirborbajr",
+  --       mappings = {
+  --         mark_read = "<Tab>",
+  --         open_in_browser = "<CR>",
+  --       },
+  --     })
+  --   end,
+  --   requires = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  -- })
 
   -- Notify
   use {
@@ -101,21 +109,18 @@ local startup = function(use)
   -- GOLang
   use({ "fatih/vim-go", run = ":GoUpdateBinaries", ft = { "go" } })
 
-  -- fuzzy finder
-  use {
-    "nvim-telescope/telescope.nvim",
-    requires = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
-    config = function()
-      require("config.telescope")
-    end,
+  -- Searching Files/Tags
+  use { 'ibhagwan/fzf-lua',
+    requires = {
+      'vijaymarupudi/nvim-fzf',
+      'kyazdani42/nvim-web-devicons'
+    }
   }
-  use {
-    "gelguy/wilder.nvim",
-    run = ":UpdateRemotePlugins",
-    config = function()
-      require("config.wilder")
-    end,
-  }
+
+  -- use {
+  --   'nvim-telescope/telescope.nvim',
+  --   requires = { {'nvim-lua/plenary.nvim'} }
+  -- }
 
   -- Colorize
   use {
@@ -125,7 +130,7 @@ local startup = function(use)
     end
   }
 
-  -- lsp
+  -- Syntax highlight
   use {
     "nvim-treesitter/nvim-treesitter",
     run = "TSUpdate",
@@ -133,6 +138,8 @@ local startup = function(use)
       require("config.treesitter")
     end,
   }
+
+  -- LSP
   use {
     "neovim/nvim-lspconfig",
     requires = {{"williamboman/nvim-lsp-installer"}},
@@ -155,7 +162,6 @@ local startup = function(use)
       "hrsh7th/cmp-vsnip",
       "saadparwaiz1/cmp_luasnip",
       "quangnguyen30192/cmp-nvim-tags",
-      "ray-x/cmp-treesitter",
       "lukas-reineke/cmp-rg",
       "petertriho/cmp-git",
     },
@@ -183,18 +189,6 @@ local startup = function(use)
     end,
   }
 
-  -- language specific
-  use {
-    "cuducos/yaml.nvim",
-    ft = {"yaml"},
-    requires = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-telescope/telescope.nvim",
-    },
-    config = function()
-      require("config.yaml")
-    end,
-  }
   use {"npxbr/go.nvim", requires = {"nvim-lua/plenary.nvim"}, ft = {"go"}}
   use {"folke/lua-dev.nvim", ft = {"lua"}}
   use {"fladson/vim-kitty"}
@@ -216,13 +210,11 @@ local startup = function(use)
     end
   }
 
-  -- file tree
+  -- Folders
   use {
-      'kyazdani42/nvim-tree.lua',
-      requires = {
-        'kyazdani42/nvim-web-devicons', -- optional, for file icon
-      },
-      config = function() require'nvim-tree'.setup {} end
+    'kyazdani42/nvim-tree.lua',
+    requires = 'kyazdani42/nvim-web-devicons',
+    config = function() require'nvim-tree'.setup {} end
   }
 
   -- status & tab lines
@@ -275,8 +267,13 @@ local startup = function(use)
   }
 
   -- general tools
-  use {"tpope/vim-abolish"}
-  use {"vim-scripts/greplace.vim", cmd = "Gsearch"}
+  -- use {"tpope/vim-abolish"}
+  -- use {"vim-scripts/greplace.vim", cmd = "Gsearch"}
+  
+  -- Packer Sync
+  if packer_bootstrap then
+    require('packer').sync()
+  end
 end
 
 return require("packer").startup(startup)

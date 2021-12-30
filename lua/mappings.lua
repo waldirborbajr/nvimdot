@@ -61,6 +61,11 @@ local function set_mappings()
   for _, val in pairs(mappings) do
     api.nvim_set_keymap(unpack(val))
   end
+
+  api.nvim_set_keymap('n', '<c-P>',
+    "<cmd>lua require('fzf-lua').files()<CR>",
+    { noremap = true, silent = true })
+
 end
 
 set_globals()
